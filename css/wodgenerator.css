@@ -1,3 +1,7 @@
 .exercise-sub-container {
   margin-left:20px;
 }
+
+.navbar-inner {
+  border-radius: 0;
+}
