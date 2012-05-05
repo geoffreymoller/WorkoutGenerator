@@ -23,6 +23,7 @@
   <script src="js/lib/bootstrap-modal.js"></script>
   <script src="js/wodgenerator.js"></script>
   <script src="js/exercises.js"></script>
+  <script src="js/persistence.js"></script>
 
 </head>
 <body>
@@ -53,7 +54,11 @@
 			<div class="span4">
 				<h2>Step 1</h2>
 				<h3>Pick the exercises to shuffle</h3>
-		  		<div id="exercises"></div>
+		  		<div id="exercises">
+            <div class="controls">
+              <span>all</span> | <span>none</span>
+            </div>
+          </div>
 		  	</div>
 			<div class="span4">
 				<h2>Step 2</h2>
@@ -96,10 +101,11 @@ for (var i = 0; i < WodGenerator.exercises.length; i++) {
 		input.checked = true;
 		input.name = exercise.category;
 		input.addEventListener('click', function(event) {
-			checkboxes = document.getElementsByClassName(this.name);
+			checkboxes = $('input.' + this.name).not('.main-input').toArray();
 			for (var j = 0; j < checkboxes.length; j++) {
 				var checkbox = checkboxes[j];
 				checkbox.checked = this.checked;
+        $(checkbox).trigger('change');
 			}
 		});
 		var label = document.createElement('label')
