@@ -47,13 +47,17 @@
 	</div>
   	<div class="container">
 		<div class="page-header">
-			<h1>Workout Generator<!--<div class="fb-like" data-href="http://www.jackflintermann.com/WorkoutGenerator" data-send="false" data-width="450" data-show-faces="false" data-colorscheme="light"></div>--></h1>
+			<h1>Workout Generator <div class="fb-like" data-href="http://www.jackflintermann.com/WorkoutGenerator" data-send="false" data-width="450" data-show-faces="false" data-colorscheme="light"></div></h1>
 		</div>
 		<div class="row">
 			<div class="span4">
 				<h2>Step 1</h2>
 				<h3>Pick the exercises to shuffle</h3>
-		  		<div id="exercises"></div>
+		  		<div id="exercises">
+            <div class="controls">
+              <span>all</span> | <span>none</span>
+            </div>
+          </div>
 		  	</div>
 			<div class="span4">
 				<h2>Step 2</h2>
@@ -96,10 +100,11 @@ for (var i = 0; i < WodGenerator.exercises.length; i++) {
 		input.checked = true;
 		input.name = exercise.category;
 		input.addEventListener('click', function(event) {
-			checkboxes = document.getElementsByClassName(this.name);
+			checkboxes = $('input.' + this.name).not('.main-input').toArray();
 			for (var j = 0; j < checkboxes.length; j++) {
 				var checkbox = checkboxes[j];
 				checkbox.checked = this.checked;
+        $(checkbox).trigger('change');
 			}
 		});
 		var label = document.createElement('label')
