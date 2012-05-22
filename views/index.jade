@@ -1,0 +1,62 @@
+div(id="fb-root")
+
+script
+  (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "http://connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+div(class="navbar")
+  div(class="navbar-inner")
+    div(class="container")
+      div(class="brand") Workout Generator
+      ul(class="nav")
+        li
+          a(href="#infoModal",data\-dismiss="modal",data\-toggle="modal") About
+
+div(class="container")
+  div(class="page-header")
+    h1 Workout Generator
+      div(class="fb-like",data-href="http://www.jackflintermann.com/WorkoutGenerator",data-send="false",data-width="450",data-show-faces="false",data-colorscheme="light")
+  div(class="row")
+
+    div(class="span4")
+      h2 Step 1
+      h3 Pick the exercises to shuffle
+      div(id="exercises")
+        div(class="controls")
+          span all
+          |
+          span none
+
+    div(class="span4")
+      h2 Step 2
+      h3 Generate your workout
+      div(class='btn btn-large btn-success',id="generateWorkout",name="generateWorkout") Go\!
+      div(id="workout_title",style="display:none")
+        h2 Your workout:
+        div(id="workout_display")
+        div(id="button_easier",class="btn btn-info") Easier
+        div(id="button_harder",class="btn btn-info") Harder
+
+div(class="modal hide fade span8",id="infoModal")
+  div(class="modal-header")
+    a(class="close",data-dismiss="modal") ×
+    h3 Workout Generator
+
+  div(class="modal-body")
+    p Workout Generator gives you personalized crossfit-style workouts that only need the equipment that you have.
+    p It was made by 
+      a(href="http://www.jackflintermann.com") Jack Flintermann
+      \. \Suggestions / comments are welcome!
+
+  div(class="modal-footer")
+    a(href="#",data-dismiss="modal",class="btn") Close
+
+footer
+  div(class="container")
+
+script(src="/javascripts/main.js");
